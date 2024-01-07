@@ -33,6 +33,8 @@ int main(int const argc, char const *argv[]) {
     }
     std::cout << "Calibration: " << calibration << std::endl;
 
+    file.close();
+
     return 0;
 }
 
