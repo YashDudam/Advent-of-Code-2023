@@ -6,10 +6,6 @@
 
 #include "Game.hpp"
 
-#define RED_MAX 12
-#define GREEN_MAX 13
-#define BLUE_MAX 14
-
 int main(int const argc, char const *argv[]) {
     if (argc != 2) {
         std::cerr << "USAGE: " << argv[0] << " <filename>" << std::endl;
