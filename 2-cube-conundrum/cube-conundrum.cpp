@@ -20,15 +20,18 @@ int main(int const argc, char const *argv[]) {
     }
 
     auto sum = 0;
+    auto power = 0;
     std::string line;
     while (std::getline(file, line)) {
-        auto const game = Game(line);
+        auto game = Game(line);
         if (game.is_valid()) {
             sum += game.id();
         }
+        power += game.minimum_power();
     }
 
     std::cout << "Sum: " << sum << std::endl;
+    std::cout << "Power: " << power << std::endl;
 
     file.close();
 

@@ -14,7 +14,7 @@
 auto tokenize(std::string str, std::string del = " ") -> std::vector<std::string>;
 auto build_count(std::string str) -> std::array<int, 3>;
 
-Game::Game(std::string game_info) {
+Game::Game(std::string game_info) : min_red_(0), min_green_(0), min_blue_(0) {
     auto pattern = std::regex("Game ([0-9]+):");
     auto match = std::smatch();
     std::regex_search(game_info, match, pattern);
@@ -38,6 +38,16 @@ auto Game::is_valid() const -> bool {
     }
 
     return true;
+}
+
+auto Game::minimum_power() -> int {
+    for (auto set : cube_sets_) {
+        if (set[RED_INDEX] > min_red_) min_red_ = set[RED_INDEX];
+        if (set[BLUE_INDEX] > min_blue_) min_blue_ = set[BLUE_INDEX];
+        if (set[GREEN_INDEX] > min_green_) min_green_ = set[GREEN_INDEX];
+    }
+
+    return min_red_ * min_blue_ * min_green_;
 }
 
 Game::~Game() {
