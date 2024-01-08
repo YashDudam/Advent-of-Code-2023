@@ -23,11 +23,18 @@ int main(int const argc, char const *argv[]) {
         return 1;
     }
 
+    auto sum = 0;
     std::string line;
     while (std::getline(file, line)) {
-        std::cout << line << std::endl;
-        break;
+        auto const game = Game(line);
+        if (game.is_valid()) {
+            sum += game.id();
+        }
     }
+
+    std::cout << "Sum: " << sum << std::endl;
+
+    file.close();
 
     return 0;
 }
